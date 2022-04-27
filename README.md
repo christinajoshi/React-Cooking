@@ -1,4 +1,4 @@
-# Creating two counters; one with a class component and the other with a function component. 
+# Creating two counters; one with a class component and the other with a function component. Using Context to 'create a theme' and change the button colors.
 
 Massive number of comments to help learn. In the workplace before anything goes to production or sometimes even development, I remove unnecessary comments.
 
