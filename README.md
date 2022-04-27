@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Creating two counters; one with a class component and the other with a function component. 
+
+Massive number of comments to help learn. In the workplace before anything goes to production or sometimes even development, I remove unnecessary comments.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
