@@ -20,6 +20,7 @@ function App() {
     // setting props on this component. can use this.props to render it. everything in {} is JavaScript
     // Provider must have attribute called value and an object
     <ThemeContext.Provider value = {{ backgroundColor: theme }}>
+        Using Context
         Counter using class component
         <Counter initialCount={0} />
         Counter using function component
