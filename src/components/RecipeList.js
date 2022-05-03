@@ -1,7 +1,9 @@
 import React from "react";
 import Recipe from "./Recipe";
 
-// 'RecipeList recipes' props is getting passed in from App \
+/* 'RecipeList recipes' props is getting passed in from App. In the props are two functions created in App and can be referenced in this component
+    and any other child component. In this case, both are passed into RecipeList and delete is further passed into Recipe below. this is called child prop 
+    drilling. Another option would be to use Context */
 export default function RecipeList( props ) {
   const {
     recipes,
