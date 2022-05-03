@@ -1,3 +1,31 @@
+@import-normalize;
+@import 'font.css';
+@import 'buttons.css';
+@import 'recipe-list.css';
+@import 'ingredient-list.css';
+@import 'ingredient.css';
+@import 'recipe.css';
+
+*, *::before, *::after {
+  /* font-family: Roboto, sans-serif;*/
+  font-family: Lora, sans-serif; 
+}
+
+html{
+  font-size: 20px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* utility class just to add margin to edit button */
+.mr-1{
+  margin-right: 5px;
+}
+
+/*
 .App {
   text-align: center;
 }
@@ -36,3 +64,4 @@
     transform: rotate(360deg);
   }
 }
+*/

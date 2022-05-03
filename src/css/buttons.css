@@ -1,0 +1,30 @@
+.btn {
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: inherit;
+    border-radius: 5px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+/* unlike RGB, in HSL both the saturation and lightness of a color can change. Also, easy to add hover effects by changing the lightness. 
+    For complementarly colors, just add 180 to the hue. */
+.btn--primary{
+    color: white;
+    background-color: hsl(200, 100%, 32%); 
+}
+
+.btn--primary:hover{
+    background-color: hsl(200, 100%, 23%);
+}
+
+.btn--danger{
+    color: white;
+    background-color: hsl(380, 100%, 32%); 
+}
+
+.btn--danger:hover{
+    background-color: hsl(380, 100%, 23%);
+}

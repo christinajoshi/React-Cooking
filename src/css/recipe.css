@@ -1,0 +1,46 @@
+.recipe{
+    padding: 20px; 
+    padding-bottom: 40px; /* additional padding on bottom to separate recipes */
+    border-bottom: 1px solid black;
+}
+
+.recipe:last-child {
+    border-bottom: none;
+    padding-bottom: 10px;
+}
+
+.recipe__header{
+    display: flex; /* to display title and buttons on one line */
+    justify-content: space-between;
+    align-items: center; /* to have buttons horizontally centered with the title */
+    margin-bottom: 30px;
+}   
+
+.recipe__title{
+    margin: 0; /* removes space at bottom and top of  page */
+    font-size: 1.35rem;
+}
+
+.recipe__row {
+    margin-top: 10px;
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+.recipe__label {
+    margin-right: 5px;
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+.recipe__value {
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+.recipe__value--indented {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-family: 'Roboto-Regular', sans-serif;
+}
+
+.recipe__instructions {
+    white-space: pre-wrap; /* preserves white space */
+}

@@ -1,0 +1,11 @@
+@font-face {
+    font-family: Roboto;
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype'), url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Lora;
+    src: url('../fonts/Lora-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
