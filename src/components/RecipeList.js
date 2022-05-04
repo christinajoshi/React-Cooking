@@ -1,37 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import Recipe from "./Recipe";
+import { RecipeContext } from "./App";
 
 /* 'RecipeList recipes' props is getting passed in from App. In the props are two functions created in App and can be referenced in this component
     and any other child component. In this case, both are passed into RecipeList and delete is further passed into Recipe below. this is called child prop 
     drilling. Another option would be to use Context */
-export default function RecipeList( props ) {
-  const {
-    recipes,
-    handleRecipeAdd,
-    handleRecipeDelete
-  } = props
+export default function RecipeList({ recipes }) {
+  // this could be just value, but deconstrust and just get RecipeAdd
+  const { handleRecipeAdd } = useContext(RecipeContext);
   return (
     // loop through recipe array. map() calls a function once for each element in an array inside the JSX, but can do it outside like in IngredientsList
     // JSX expression must have one parent element => can only return one element (can all be in one div) OR inside of a fragment <> </>
     <div className="recipe-list">
       <div>
-        {recipes.map(recipe => {
+        {recipes.map((recipe) => {
           // return a recipe. using spread operator takes all the key value pairs and put them as individual attribute on recipe
           // allows us to pass down all our properties as top level of the prop instead of  being nested inside the recipe itself
           return (
-            <Recipe 
-                        key={recipe.id} 
-                        handleRecipeDelete = {handleRecipeDelete}
-                        {...recipe} 
-                    />      
-          )
+            <Recipe key={recipe.id} {...recipe} />
+            // no longer passing handleRecipeDelete = {handleRecipeDelete} as a prop
+          );
         })}
       </div>
       <div className="recipe-list__add-recipe-btn-container">
-        <button 
-            className="btn btn--primary" 
-            onClick={handleRecipeAdd}
-        >Add Recipe
+        <button className="btn btn--primary" onClick={handleRecipeAdd}>
+          Add Recipe
         </button>
       </div>
     </div>

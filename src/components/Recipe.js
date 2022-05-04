@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import IngredientList from "./IngredientList";
+import { RecipeContext } from "./App";
 
 // below deconstructering in arguments field is a little messy
 // export default function Recipe({name, cookTime, servings, instruction}) {
 // so, move deconstructering down and creating const and setting equal to props
 // don't forget to destructure id out
 export default function Recipe(props) {
+  const { handleRecipeDelete } = useContext(RecipeContext)
     const {
         id, 
         name,
         cookTime,
         servings,
         instruction,
-        ingredients,
-        handleRecipeDelete
+        ingredients
     } = props
   return (
     <div className="recipe">

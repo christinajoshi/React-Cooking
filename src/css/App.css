@@ -1,14 +1,16 @@
-@import-normalize;
+/* TODO: fix issue with @import-normalize; */
 @import 'font.css';
 @import 'buttons.css';
 @import 'recipe-list.css';
 @import 'ingredient-list.css';
 @import 'ingredient.css';
 @import 'recipe.css';
+@import 'recipe-edit.css';
 
 *, *::before, *::after {
   /* font-family: Roboto, sans-serif;*/
   font-family: Lora, sans-serif; 
+  box-sizing: border-box;
 }
 
 html{
