@@ -13,7 +13,7 @@ export default function Recipe(props) {
         name,
         cookTime,
         servings,
-        instruction,
+        instructions,
         ingredients
     } = props
   return (
@@ -45,7 +45,7 @@ export default function Recipe(props) {
       </div>
       <div className="recipe__row">
           <span className="recipe__label">Instructions:</span>
-          <div className="recipe__value recipe__instructions recipe__value--indented">{instruction}</div>
+          <div className="recipe__value recipe__instructions recipe__value--indented">{instructions}</div>
       </div>
       <div className="recipe__row">
           <span className="recipe__label">Ingredients:</span>
