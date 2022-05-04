@@ -1,5 +1,5 @@
 // hooks up html file to our javascript
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
@@ -9,9 +9,9 @@ import reportWebVitals from './reportWebVitals';
 // passing in App component and render it in root
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
+  <StrictMode>
     <App />
-  
+  </StrictMode>
 );
 
 //ReactDOM.render(<App />, document.getElementById('root'));

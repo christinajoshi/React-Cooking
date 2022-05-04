@@ -7,7 +7,7 @@ import { RecipeContext } from "./App";
 // so, move deconstructering down and creating const and setting equal to props
 // don't forget to destructure id out
 export default function Recipe(props) {
-  const { handleRecipeDelete } = useContext(RecipeContext)
+  const { handleRecipeDelete, handleRecipeSelect } = useContext(RecipeContext)
     const {
         id, 
         name,
@@ -21,7 +21,12 @@ export default function Recipe(props) {
       <div className="recipe__header">
         <h3 className="recipe__title">{name}</h3>
         <div>
-          <button className="btn btn--primary mr-1">Edit</button>
+          <button 
+            className="btn btn--primary mr-1"
+            onClick= {() => handleRecipeSelect(id)}
+           > 
+            Edit
+          </button>
           <button 
               className='btn btn--danger'
               onClick={() => handleRecipeDelete(id)}
