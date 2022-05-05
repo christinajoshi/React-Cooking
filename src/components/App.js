@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import RecipeList from "./RecipeList";
 import "../css/App.css";
 import RecipeEdit from "./RecipeEdit";
+// Router Native is for mobile
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AboutPage from "../pageComponents/AboutPage";
+import AboutPageLink from "./AboutPageLink";
 
 // setting up context
 export const RecipeContext = React.createContext();
@@ -92,11 +96,28 @@ function App() {
         if we have a selected recipe && do this: passing recipe down to RecipeEdit. If true, will evaluate everything after the &&. If selectedRecipe is undefined, 
         won't execute. This is same thing as doing a ternary: {selectedRecipe ? <RecipeEdit> : null}
         And creating a RecipeList component. Its props called recipes is passed to the component  */
-    // 
-    <RecipeContext.Provider value={recipeContextValue}>
-      <RecipeList recipes={recipes} />
-      {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
-    </RecipeContext.Provider>
+    /* Browser Router aliased as router is used to define multipe routes in an app; allows us to have navigation without the page refreshing. Router
+        can have only one child. If want share a link, can only to the starting page  */
+
+    <BrowserRouter>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <RecipeContext.Provider value={recipeContextValue}>
+                <RecipeList recipes={recipes} />
+                {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
+              </RecipeContext.Provider>
+            </>
+          }
+        ></Route>
+
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
+      <AboutPageLink />
+    </BrowserRouter>
   );
 }
 
