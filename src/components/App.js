@@ -8,10 +8,10 @@ export const RecipeContext = React.createContext();
 const LOCAL_STORAGE_KEY = "cookingWithReact.recipes";
 
 function App() {
+  const [selectedRecipeID, setSelectedRecipeID] = useState();
+  /* creating state with recipes list (the current state) and setRecipes function (to update the state)
+      the first time useState is called setting sampleRecipes (hardcoded) to recipes and the setRecipes function is used to update the recipes every other time useState is called */
 
-  const[selectedRecipeID, setSelectedRecipeID]  = useState()  
-  // creating state with recipes list (the current state) and setRecipes function (to update the state)
-  // the first time useState is called setting sampleRecipes (hardcoded) to recipes and the setRecipes function is used to update the recipes every other time useState is called
   const [recipes, setRecipes] = useState(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (recipeJSON == null) {
@@ -21,65 +21,78 @@ function App() {
     }
   });
 
-  const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeID)
-  console.log(selectedRecipe)
+  const selectedRecipe = recipes.find(
+    (recipe) => recipe.id === selectedRecipeID
+  );
+  console.log(selectedRecipe);
 
+  /* useEffect allows us to do a side effect. every time app re-renders this component following is called. what do every time re-render component  
+      when you want to actually call this function is determined in second parameter of useEffect. do this by passing in an array which is all the different
+      dependencies you want to depend on. 
+      if want useEffect to run only as soon as application loads, pass it an empty array. 
+      when this array of value changes (any of them) is when the component will re-update itself 
+      anytime recipes changes*/
+  /* local storage can only support strings, so set to string version of recipes. don't forget to check Application tab and Local Storage to make sure working   */
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes));
   }, [recipes]);
 
-  // object to hold all functions
+  // object to hold all functions. since names are the same, can just list once instead of handleRecipeAdd: handleRecipeAdd
   const recipeContextValue = {
     handleRecipeAdd,
     handleRecipeDelete,
     handleRecipeSelect,
-    handleRecipeChange
+    handleRecipeChange,
   };
 
-  function handleRecipeSelect(id){
-    setSelectedRecipeID(id)
+  function handleRecipeSelect(id) {
+    setSelectedRecipeID(id);
   }
 
+  // TODO: object. security vulnerabilities with the library uuid, so using date for now. nano id might work too import { nanoid } from 'nanoid' nanoid()
   function handleRecipeAdd() {
     const newRecipe = {
       id: Date.now().toString(),
-      name: ' ',
+      name: " ",
       servings: undefined,
       cookTime: "",
       instructions: "",
-      ingredients: [
-        { id: Date.now().toString(), amount: "", name: "" },
-      ],
+      ingredients: [{ id: Date.now().toString(), amount: "", name: "" }],
     };
+
+    // use the spread operator to get the current recipes array (get all of the recipes in it)  and add newRecipe to the very end of that array
     setRecipes([...recipes, newRecipe]);
-    setSelectedRecipeID(newRecipe.id)
+    setRecipes([...recipes, newRecipe]);
+    setSelectedRecipeID(newRecipe.id);
     sampleRecipes = [...recipes, newRecipe];
   }
 
   // updates the state. takes the id of the recipe that we want to change and the new recipe want to replace it with
-  function handleRecipeChange(id, recipe){
-    // creating duplicate of array because react does not allow you to change state. will mutate this array and then set the old state to this new array 
-    const newRecipes = [...recipes]
+  function handleRecipeChange(id, recipe) {
+    // creating duplicate of array because react does not allow you to change state. will mutate this array and then set the old state to this new array
+    const newRecipes = [...recipes];
     // whichever recipe has the id that was passed in, get the index of it
-    const index = newRecipes.findIndex(r => r.id === id)
-    // find recipe with that index and set it to the new recipe that we passed in 
-    newRecipes[index] = recipe
-    setRecipes(newRecipes)
+    const index = newRecipes.findIndex((r) => r.id === id);
+    // find recipe with that index and set it to the new recipe that we passed in
+    newRecipes[index] = recipe;
+    setRecipes(newRecipes);
   }
 
+  // get all of the recipes that do not have that id and set those recipes
   function handleRecipeDelete(id) {
-    if (selectedRecipeID != null && selectedRecipeID === id){
-      setSelectedRecipeID(undefined)
+    if (selectedRecipeID != null && selectedRecipeID === id) {
+      setSelectedRecipeID(undefined);
     }
-    // get all of the recipes that do not have that id and set those recipes
     setRecipes(recipes.filter((recipe) => recipe.id !== id));
     sampleRecipes = recipes;
   }
 
   return (
-    // Wrapping everything returning inside of the context. .Provider because providing value created (the object with the two functions in it)
-    // if we have a selected recipe && do this: passing recipe down to RecipeEdit. If true, will evaluate everything after the &&. If selectedRecipe is undefined, won't execute
-    // this is same thing as doing a ternary: {selectedRecipe ? <RecipeEdit> : null}
+    /* Wrapping everything returning inside of the context. .Provider because providing value created (the object with the functions in it)
+        if we have a selected recipe && do this: passing recipe down to RecipeEdit. If true, will evaluate everything after the &&. If selectedRecipe is undefined, 
+        won't execute. This is same thing as doing a ternary: {selectedRecipe ? <RecipeEdit> : null}
+        And creating a RecipeList component. Its props called recipes is passed to the component  */
+    // 
     <RecipeContext.Provider value={recipeContextValue}>
       <RecipeList recipes={recipes} />
       {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}

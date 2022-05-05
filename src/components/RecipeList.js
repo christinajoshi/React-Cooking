@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import Recipe from "./Recipe";
 import { RecipeContext } from "./App";
 
-/* 'RecipeList recipes' props is getting passed in from App. In the props are two functions created in App and can be referenced in this component
-    and any other child component. In this case, both are passed into RecipeList and delete is further passed into Recipe below. this is called child prop 
-    drilling. Another option would be to use Context */
+/* 'RecipeList recipes' props is getting passed in from App. In the props is the handleRecipeAdd() created in App and is used in this RecipeList component. 
+     handleRecipeDelete() *can* also be passed further down into the child component Recipe via props. This is called child prop drilling. Another way to pass 
+     down into components is to use Context  */
 export default function RecipeList({ recipes }) {
   // this could be just value, but deconstrust and just get RecipeAdd
   const { handleRecipeAdd } = useContext(RecipeContext);
