@@ -1,4 +1,4 @@
-## Very basic and quick recipe application. Building front-end using React for learning purposes. Will eventually connect to database; possibly using express framework and MongoDB.
+## Very basic and quick recipe application. Very little CSS. Building front-end using React for learning purposes. Will eventually connect to database; possibly using express framework and MongoDB. 
 
 Massive number of comments to help learn. In the workplace before anything goes to production or sometimes even development, I remove unnecessary comments. Keeping the rest of the info in this auto-generated readme.
 
