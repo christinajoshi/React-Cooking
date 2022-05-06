@@ -9,6 +9,7 @@ Routes <br />
 useState <br />
 useEffect <br />
 useContext <br />
+localStorage only until hook up to db 
 
 ## Notes on comments
 
