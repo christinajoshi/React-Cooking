@@ -10,6 +10,7 @@ useState <br />
 useEffect <br />
 useContext <br />
 localStorage only until hook up to db 
+Material UI - though mui/styles is not compatible with React.StrictMode or React 18, so may remove AppBar
 
 ## Notes on comments
 
