@@ -1,4 +1,4 @@
-## Very basic and quick recipe application. Very little CSS. Building front-end using React for learning purposes. Will eventually add functionality, change layout, make it look pretty, and connect to database; possibly using express framework and MongoDB. 
+## Very basic and quick recipe application. Building front-end using React for learning purposes. *Very* little CSS; just wanted buttons to have colors, that's all.  Will eventually add functionality, change layout/make it look pretty, and connect to database. 
 
 ## Application Functionality
 Add, Edit and Remove recipes <br />
@@ -14,4 +14,4 @@ Material UI - though mui/styles is not compatible with React.StrictMode or React
 
 ## Notes on comments
 
-Massive number of comments to help learn. In the workplace before anything goes to production or sometimes even development, I remove unnecessary comments.
+Massive number of comments to help learn. In the workplace before anything goes to production or sometimes even testing, I remove unnecessary comments.
