@@ -10,7 +10,7 @@ useState <br />
 useEffect <br />
 useContext <br />
 localStorage only until hook up to db <br />
-Material UI 
+Not used yet, but looking into Material UI 
 
 ## Notes on comments
 
